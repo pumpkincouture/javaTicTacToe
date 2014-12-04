@@ -37,7 +37,5 @@ public class Board {
     return false;
     }
 
-    public void placeMove(String answer, String gamePiece){
-        boardCells.put(gamePiece, boardCells.getKey(answer));
-    }
+    public HashMap placeMove(String answer, String gamePiece){ boardCells.put(answer, gamePiece); return boardCells; }
 }
