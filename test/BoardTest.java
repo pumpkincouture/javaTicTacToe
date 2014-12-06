@@ -13,18 +13,7 @@ public class BoardTest {
 
     @Test
     public void printBoardHash() {
-        HashMap<String, String> boardCells = new LinkedHashMap();
-        boardCells.put("9", "");
-        boardCells.put("8", "");
-        boardCells.put("7", "");
-        boardCells.put("6", "");
-        boardCells.put("5", "");
-        boardCells.put("4", "");
-        boardCells.put("3", "");
-        boardCells.put("2", "");
-        boardCells.put("1", "");
-
-        assertEquals(boardCells, test.getBoard());
+        assertEquals({}, test.getBoard());
     }
 
     @Test
