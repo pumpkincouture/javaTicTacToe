@@ -13,10 +13,4 @@ public class UserInterfaceTest {
     public void setUp() {
         test = new UserInterface();
     }
-
-    @Test
-    public void getUserInput(){
-        String userInput = "6";
-        test.printChoice(userInput);
-    }
 }

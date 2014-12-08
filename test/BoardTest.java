@@ -35,13 +35,11 @@ public class BoardTest {
 
     @Test
     public void checkIfSevenIsValid() {
-
         assertEquals(true, test.isMoveValid("7"));
     }
 
     @Test
     public void checkIfVIsValid() {
-
         assertEquals(false, test.isMoveValid("v"));
     }
 

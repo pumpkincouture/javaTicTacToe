@@ -28,7 +28,6 @@ public class Board {
     public boolean isMoveValid(String answer){
         for (Map.Entry<String, String> entry : boardCells.entrySet()) {
             if (entry.getKey() == answer) {
-                System.out.println(answer);
                 return true;
             }
         }

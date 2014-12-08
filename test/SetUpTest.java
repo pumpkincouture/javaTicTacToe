@@ -21,7 +21,17 @@ public class SetUpTest {
     }
 
     @Test
-    public void createFirstPlayer() {
-        System.out.println(test.createPlayer());
+    public void checkGamePieceOfFirstPlayer() {
+        assertEquals(player1.getGamePiece(), test.getFirstPlayer().getGamePiece());
+    }
+
+    @Test
+    public void checkGamePieceOfSecondPlayer() {
+        assertEquals(player2.getGamePiece(), test.getSecondPlayer().getGamePiece());
+    }
+
+    @Test
+    public void checkBoardSpaces() {
+        assertEquals(boardTest.getBoard(), test.getBoard());
     }
 }
