@@ -7,8 +7,6 @@ import java.util.Map;
  */
 public class Board {
 
-    private UserInterface userinterface;
-
     private HashMap<String, String> boardCells = new LinkedHashMap();
 
     public Board() {
@@ -37,5 +35,7 @@ public class Board {
     return false;
     }
 
-    public HashMap placeMove(String answer, String gamePiece){ boardCells.put(answer, gamePiece); return boardCells; }
+    public HashMap placeMove(String answer, String gamePiece){
+        boardCells.put(answer, gamePiece); return boardCells;
+    }
 }

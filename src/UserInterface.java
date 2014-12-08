@@ -9,14 +9,14 @@ public class UserInterface {
         System.out.println("Welcome to Tic Tac Toe.");
     }
 
-    public void getPlayerName(){
-        System.out.println("Please enter your name.");
-    }
-
     public String captureChoice(){
         Scanner input = new Scanner(System.in);
         String choice = input.nextLine();
         return choice;
+    }
+
+    public void printChoice(String choice) {
+        System.out.println("You have chosen space " + choice + ".");
     }
 
     public void gamePieceAssignment(){
@@ -38,4 +38,5 @@ public class UserInterface {
     public void printError(){
         System.out.println("That move is not available, please try again.");
     }
+
 }

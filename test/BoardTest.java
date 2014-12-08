@@ -1,4 +1,5 @@
 import org.junit.Test;
+import org.junit.Before;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -9,7 +10,12 @@ import static org.junit.Assert.assertEquals;
  * Created by administrator on 12/4/14.
  */
 public class BoardTest {
-    Board test = new Board();
+    Board test;
+
+    @Before
+    public void setUp() {
+        test = new Board();
+    }
 
     @Test
     public void printBoardHash() {
@@ -28,10 +34,16 @@ public class BoardTest {
     }
 
     @Test
-    public void checkIfSevenIsValid() { assertEquals(true, test.isMoveValid("7")); }
+    public void checkIfSevenIsValid() {
+
+        assertEquals(true, test.isMoveValid("7"));
+    }
 
     @Test
-    public void checkIfVIsValid() { assertEquals(false, test.isMoveValid("v")); }
+    public void checkIfVIsValid() {
+
+        assertEquals(false, test.isMoveValid("v"));
+    }
 
     @Test
     public void placeMoveOnBoard() {
