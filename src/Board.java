@@ -21,20 +21,38 @@ public class Board {
         boardCells.put("1", "");
     }
 
-    public HashMap getBoard(){
+    public HashMap getBoard() {
         return boardCells;
     }
 
-    public boolean isMoveValid(String answer){
+    public boolean isMoveValid(String answer) {
+       return validateCells(answer);
+    }
+
+    public boolean isBoardFull() {
+        return checkForOpenCells();
+    }
+
+    public HashMap placeMove(String answer, String gamePiece) {
+        boardCells.put(answer, gamePiece); return boardCells;
+    }
+
+    private boolean validateCells(String answer) {
         for (Map.Entry<String, String> entry : boardCells.entrySet()) {
-            if (entry.getKey() == answer) {
+            if (entry.getKey().equals(answer)) {
                 return true;
             }
         }
-    return false;
+        return false;
     }
 
-    public HashMap placeMove(String answer, String gamePiece){
-        boardCells.put(answer, gamePiece); return boardCells;
+    private boolean checkForOpenCells() {
+        for(Map.Entry<String, String> entry : boardCells.entrySet()) {
+            String emptySpace = "";
+            if (entry.getValue().equals(emptySpace)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
