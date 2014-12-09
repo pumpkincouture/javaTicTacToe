@@ -14,20 +14,31 @@ public class Game {
     public void playGame() {
         printIntro();
         while (boardIsNotFull()) {
-            getPlayerMoves();
+            getPlayerMoves(firstPlayerPiece());
         }
+        System.out.println("The game is over!");
     }
 
-    public void getPlayerMoves() {
-         setup.getUI().printUserPrompt(setup.getFirstPlayer().getGamePiece());
+    public void getPlayerMoves(String playerPiece) {
+         setup.getUI().printUserPrompt(playerPiece);
          displayBoard();
-          if (invalidMove()) {
+         String choice = chooseMove();
+          if (isInvalidMove(choice)) {
               System.out.println("IT'S NOT VALID");
               setup.getUI().printError();
           } else {
-
+              System.out.println("I'm in the else statement");
+              placeMoveOnBoard(choice, playerPiece);
           }
     }
+
+    private String firstPlayerPiece() {
+        return setup.getFirstPlayer().getGamePiece();
+    }
+
+//    private String switchPlayers() {
+//
+//    }
 
     private void printIntro() {
         setup.getUI().printWelcomeMessage();
@@ -36,8 +47,12 @@ public class Game {
         setup.getUI().printStartingPlayer();
     }
 
-    private boolean invalidMove() {
-        return setup.getBoard().isMoveValid(setup.getUI().captureChoice()) == false;
+    private String chooseMove() {
+        return setup.getUI().captureChoice();
+    }
+
+    private boolean isInvalidMove(String move) {
+        return setup.getBoard().isMoveValid(move) == false;
     }
 
     private boolean boardIsNotFull() {
@@ -48,5 +63,8 @@ public class Game {
         setup.getUI().printBoard(setup.getBoard().getBoardCells());
     }
 
+    private void placeMoveOnBoard(String answer, String gamePiece) {
+        setup.getBoard().placeMove(answer, gamePiece);
+    }
 
 }

@@ -40,7 +40,7 @@ public class Board {
 
     private boolean validateCells(String answer) {
         for (Map.Entry<String, String> entry : boardCells.entrySet()) {
-            if (entry.getKey().equals(answer)) {
+            if (entry.getKey().equals(answer) && entry.getValue().equals("")) {
                 return true;
             }
         }
