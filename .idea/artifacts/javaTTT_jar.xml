@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="javaTTT:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/javaTTT_jar</output-path>
+    <root id="archive" name="javaTTT.jar">
+      <element id="module-output" name="javaTTT" />
+    </root>
+  </artifact>
+</component>
