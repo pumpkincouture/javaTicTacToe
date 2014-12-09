@@ -1,4 +1,5 @@
-
+import java.util.LinkedHashMap;
+import java.util.HashMap;
 /**
  * Created by administrator on 12/9/14.
  */
@@ -10,9 +11,26 @@ public class Game {
         this.setup = new SetUp();
     }
 
-    public void printPlayers() {
-        System.out.println(setup.getBoard());
-        System.out.println(setup.getFirstPlayer());
-        System.out.println(setup.getSecondPlayer());
+    public void printStatements() {
+        setup.getUI().printWelcomeMessage();
+        setup.getUI().printGamePieceAssignment(setup.getFirstPlayer().getGamePiece(), setup.getSecondPlayer().getGamePiece());
+        setup.getUI().printRules();
+        setup.getUI().printStartingPlayer();
+    }
+
+    public void playGame() {
+
+        while (boardIsNotFull()) {
+          setup.getUI().printUserPrompt(setup.getFirstPlayer().getGamePiece());
+          setup.getUI().printBoard(setup.getBoard().getBoardCells());
+        }
+    }
+
+    public void switchPlayer() {
+
+    }
+
+    private boolean boardIsNotFull() {
+        return !setup.getBoard().isBoardFull();
     }
 }

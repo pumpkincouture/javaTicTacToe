@@ -1,42 +1,82 @@
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Scanner;
+
 /**
  * Created by administrator on 12/4/14.
  */
-import java.util.Scanner;
 
 public class UserInterface {
 
-    public void welcomeMessage(){
-        System.out.println("Welcome to Tic Tac Toe.");
+    public void printWelcomeMessage() {
+        System.out.println("Welcome to Tic Tac Toe!");
     }
 
-    public String captureChoice(){
+    public void printGamePieceAssignment(String playerOnePiece, String playerTwoPiece) {
+        System.out.println("Player 1 will have the " + playerOnePiece + " piece and Player 2 will have the " + playerTwoPiece + " piece.");
+    }
+
+    public void printRules() {
+        System.out.println("The first player to get 3 in a row wins!");
+    }
+
+    public void printStartingPlayer() {
+        System.out.println("Player 1 will start.");
+    }
+
+    public String captureChoice() {
         Scanner input = new Scanner(System.in);
         String choice = input.nextLine();
         return choice;
     }
 
-    public void printChoice(String choice) {
-        System.out.println("You have chosen space " + choice + ".");
+    public void printUserPrompt(String gamePiece) {
+        System.out.println("Please choose a valid space with your " + gamePiece + ".");
     }
 
-    public void gamePieceAssignment(){
-        System.out.println("Player 1 will have the X piece and Player 2 will have the O piece");
+    public void printWinner(String gamePiece) {
+        System.out.println(gamePiece + " wins!");
     }
 
-    public void userPrompt(String gamePiece){
-        System.out.println("Please place a move with your " + gamePiece);
-    }
-
-    public void printWinner(String playerName){
-        System.out.println(playerName + " wins!");
-    }
-
-    public void catsGame(){
+    public void catsGame() {
         System.out.println("Cat's game!");
     }
 
-    public void printError(){
+    public void printError() {
         System.out.println("That move is not available, please try again.");
     }
 
+    public void printBoard(HashMap<String, String> boardCells) {
+        printTopRow(boardCells);
+        printLines();
+        printMiddleRow(boardCells);
+        printLines();
+        printBottomRow(boardCells);
+    }
+
+    private void printTopRow(HashMap<String, String> boardCells) {
+        System.out.print(boardCells.get("1") + " | ");
+        System.out.print(boardCells.get("2") + " | ");
+        System.out.print(boardCells.get("3"));
+    }
+
+    private void printMiddleRow(HashMap<String, String> boardCells) {
+        System.out.print(boardCells.get("4") + " | ");
+        System.out.print(boardCells.get("5") + " | ");
+        System.out.print(boardCells.get("6"));
+    }
+
+    private void printBottomRow(HashMap<String, String> boardCells) {
+        System.out.print(boardCells.get("7") + " | ");
+        System.out.print(boardCells.get("8") + " | ");
+        System.out.print(boardCells.get("9"));
+    }
+
+    private void printLines() {
+        System.out.print("\n");
+        System.out.print("-------");
+        System.out.print("\n");
+    }
 }
+

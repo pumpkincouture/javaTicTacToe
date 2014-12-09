@@ -12,6 +12,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class BoardTest {
     Board test;
+    Player testPlayer;
 
     public void fillBoard() {
         test.placeMove("9", "O");
@@ -28,6 +29,7 @@ public class BoardTest {
     @Before
     public void setUp() {
         test = new Board();
+        testPlayer = new Player("X");
     }
 
     @Test
@@ -43,7 +45,7 @@ public class BoardTest {
         boardCells.put("2", "");
         boardCells.put("1", "");
 
-        assertEquals(boardCells, test.getBoard());
+        assertEquals(boardCells, test.getBoardCells());
     }
 
     @Test
@@ -71,7 +73,7 @@ public class BoardTest {
     @Test
     public void placeMoveOnBoard() {
         HashMap<String, String> boardCells = new LinkedHashMap();
-        boardCells.put("9", "O");
+        boardCells.put("9", "X");
         boardCells.put("8", "");
         boardCells.put("7", "");
         boardCells.put("6", "");
@@ -81,6 +83,6 @@ public class BoardTest {
         boardCells.put("2", "");
         boardCells.put("1", "");
 
-        assertEquals(boardCells, test.placeMove("9", "O"));
+        assertEquals(boardCells, test.placeMove("9", testPlayer.getGamePiece()));
     }
 }

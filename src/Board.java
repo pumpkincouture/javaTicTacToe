@@ -21,7 +21,7 @@ public class Board {
         boardCells.put("1", "");
     }
 
-    public HashMap getBoard() {
+    public HashMap getBoardCells() {
         return boardCells;
     }
 
@@ -34,7 +34,8 @@ public class Board {
     }
 
     public HashMap placeMove(String answer, String gamePiece) {
-        boardCells.put(answer, gamePiece); return boardCells;
+        boardCells.put(answer, gamePiece);
+        return boardCells;
     }
 
     private boolean validateCells(String answer) {
