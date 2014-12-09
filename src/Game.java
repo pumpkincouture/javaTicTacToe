@@ -13,7 +13,7 @@ public class Game {
 
     public void playGame() {
         printIntro();
-        while (boardIsNotFull()) {
+        while (boardHasOpenSpaces()) {
             getPlayerMoves(firstPlayerPiece());
         }
         System.out.println("The game is over!");
@@ -55,7 +55,7 @@ public class Game {
         return setup.getBoard().isMoveValid(move) == false;
     }
 
-    private boolean boardIsNotFull() {
+    private boolean boardHasOpenSpaces() {
         return !setup.getBoard().isBoardFull();
     }
 
