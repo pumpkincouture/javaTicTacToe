@@ -50,9 +50,9 @@ public class Game {
 
     private void printIntro() {
         setup.getUI().printWelcomeMessage();
-        setup.getUI().printGamePieceAssignment(setup.getFirstPlayer().getGamePiece(), setup.getSecondPlayer().getGamePiece());
+        setup.getUI().printGamePieceAssignment(firstPlayerPiece(), secondPlayerPiece());
         setup.getUI().printRules();
-        setup.getUI().printStartingPlayer();
+        setup.getUI().printStartingPlayer(firstPlayerPiece());
     }
 
     private String chooseMove() {

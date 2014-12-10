@@ -21,8 +21,8 @@ public class UserInterface {
         System.out.println("The first player to get 3 in a row wins!");
     }
 
-    public void printStartingPlayer() {
-        System.out.println("Player 1 will start.");
+    public void printStartingPlayer(String gamePiece) {
+        System.out.println("Player with " + gamePiece +  " will start.");
     }
 
     public String captureChoice() {
