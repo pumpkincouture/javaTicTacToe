@@ -85,4 +85,21 @@ public class BoardTest {
 
         assertEquals(boardCells, test.placeMove("9", testPlayer.getGamePiece()));
     }
+
+    @Test
+    public void checkSizeOfBoard() {
+      assertEquals(3, test.getBoardSize());
+    }
+
+    @Test
+    public void getTopBoardRow() {
+        HashMap<Integer, String> boardCells = new LinkedHashMap();
+        boardCells.put(3, "");
+        boardCells.put(2, "");
+        boardCells.put(1, "");
+
+        assertEquals(boardCells, test.getTopBoardRow());
+    }
+
+
 }
