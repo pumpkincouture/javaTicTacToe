@@ -13,32 +13,37 @@ public class Game {
 
     public void playGame() {
         printIntro();
-        while (boardHasOpenSpaces()) {
-            getPlayerMoves(firstPlayerPiece());
-        }
+        getPlayerMoves(firstPlayerPiece());
         System.out.println("The game is over!");
     }
 
     public void getPlayerMoves(String playerPiece) {
-         setup.getUI().printUserPrompt(playerPiece);
-         displayBoard();
-         String choice = chooseMove();
-          if (isInvalidMove(choice)) {
-              setup.getUI().printError();
-              getPlayerMoves(firstPlayerPiece());
-          } else {
-              System.out.println("I'm in the else statement");
-              placeMoveOnBoard(choice, playerPiece);
-          }
+        while (boardHasOpenSpaces()) {
+            setup.getUI().printUserPrompt(playerPiece);
+            displayBoard();
+            String choice = chooseMove();
+            if (isInvalidMove(choice)) {
+                setup.getUI().printError();
+                getPlayerMoves(playerPiece);
+            } else {
+                placeMoveOnBoard(choice, playerPiece);
+                getPlayerMoves(switchPlayers(playerPiece));
+            }
+        }
     }
 
     private String firstPlayerPiece() {
         return setup.getFirstPlayer().getGamePiece();
     }
 
-//    private String switchPlayers() {
-//
-//    }
+    private String switchPlayers(String startingPlayer) {
+        System.out.println(startingPlayer);
+        if (startingPlayer == "O") {
+            return "X";
+        } else {
+            return "O";
+        }
+    }
 
     private void printIntro() {
         setup.getUI().printWelcomeMessage();
