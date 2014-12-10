@@ -1,3 +1,5 @@
+package com.solak.TTT;
+
 import java.util.LinkedHashMap;
 import java.util.HashMap;
 /**
@@ -14,7 +16,7 @@ public class Game {
     public void playGame() {
         printIntro();
         getPlayerMoves(firstPlayerPiece());
-        System.out.println("The game is over!");
+        printEndGame();
     }
 
     private void getPlayerMoves(String playerPiece) {
@@ -40,6 +42,9 @@ public class Game {
         }
     }
 
+    private void printEndGame() {
+        setup.getUI().printGameOver();
+    }
     private String firstPlayerPiece() {
         return setup.getFirstPlayer().getGamePiece();
     }

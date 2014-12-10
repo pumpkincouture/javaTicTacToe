@@ -1,3 +1,5 @@
+package com.solak.TTT;
+
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -41,6 +43,10 @@ public class UserInterface {
 
     public void catsGame() {
         System.out.println("Cat's game!");
+    }
+
+    public void printGameOver() {
+        System.out.println("The game is over.");
     }
 
     public void printError() {

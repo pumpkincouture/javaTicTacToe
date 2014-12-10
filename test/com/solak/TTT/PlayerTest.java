@@ -1,3 +1,6 @@
+package com.solak.TTT;
+
+import com.solak.TTT.Player;
 import org.junit.Test;
 import org.junit.Before;
 

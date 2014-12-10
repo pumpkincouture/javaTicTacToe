@@ -1,3 +1,7 @@
+package com.solak.TTT;
+
+import com.solak.TTT.Game;
+
 /**
  * Created by administrator on 12/4/14.
  */

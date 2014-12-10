@@ -1,3 +1,9 @@
+package com.solak.TTT;
+
+import com.solak.TTT.Board;
+import com.solak.TTT.Player;
+import com.solak.TTT.SetUp;
+import com.solak.TTT.UserInterface;
 import org.junit.Before;
 import org.junit.Test;
 

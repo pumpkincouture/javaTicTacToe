@@ -1,5 +1,7 @@
+package com.solak.TTT;
+
+import com.solak.TTT.UserInterface;
 import org.junit.Before;
-import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 

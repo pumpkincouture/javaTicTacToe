@@ -1,9 +1,8 @@
-import org.w3c.dom.ranges.Range;
+package com.solak.TTT;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.stream.IntStream;
 
 /**
  * Created by administrator on 12/4/14.
