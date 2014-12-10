@@ -17,7 +17,7 @@ public class Game {
         System.out.println("The game is over!");
     }
 
-    public void getPlayerMoves(String playerPiece) {
+    private void getPlayerMoves(String playerPiece) {
         while (boardHasOpenSpaces()) {
             setup.getUI().printUserPrompt(playerPiece);
             displayBoard();
@@ -32,17 +32,20 @@ public class Game {
         }
     }
 
+    private String switchPlayers(String startingPlayer) {
+        if (startingPlayer == secondPlayerPiece()) {
+            return firstPlayerPiece();
+        } else {
+            return secondPlayerPiece();
+        }
+    }
+
     private String firstPlayerPiece() {
         return setup.getFirstPlayer().getGamePiece();
     }
 
-    private String switchPlayers(String startingPlayer) {
-        System.out.println(startingPlayer);
-        if (startingPlayer == "O") {
-            return "X";
-        } else {
-            return "O";
-        }
+    private String secondPlayerPiece() {
+        return setup.getSecondPlayer().getGamePiece();
     }
 
     private void printIntro() {
@@ -71,5 +74,4 @@ public class Game {
     private void placeMoveOnBoard(String answer, String gamePiece) {
         setup.getBoard().placeMove(answer, gamePiece);
     }
-
 }
