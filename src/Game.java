@@ -24,8 +24,8 @@ public class Game {
          displayBoard();
          String choice = chooseMove();
           if (isInvalidMove(choice)) {
-              System.out.println("IT'S NOT VALID");
               setup.getUI().printError();
+              getPlayerMoves(firstPlayerPiece());
           } else {
               System.out.println("I'm in the else statement");
               placeMoveOnBoard(choice, playerPiece);
