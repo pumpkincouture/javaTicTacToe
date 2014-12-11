@@ -29,6 +29,7 @@ public class Game {
                 getPlayerMoves(playerPiece);
             } else {
                 placeMoveOnBoard(choice, playerPiece);
+                System.out.println(boardHasAWinner(playerPiece));
                 getPlayerMoves(switchPlayers(playerPiece));
             }
         }
@@ -66,6 +67,10 @@ public class Game {
 
     private boolean isInvalidMove(String move) {
         return setup.getBoard().isMoveValid(move) == false;
+    }
+
+    private boolean boardHasAWinner(String gamePiece) {
+        return setup.getBoard().checkBoardForWin(gamePiece);
     }
 
     private boolean boardHasOpenSpaces() {
