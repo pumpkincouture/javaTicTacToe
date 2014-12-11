@@ -21,7 +21,7 @@ public class BoardTest {
     Player testPlayer;
 
     public void fillBoard() {
-        test.placeMove("9", "O");
+        test.placeMove("9", "X");
         test.placeMove("8", "X");
         test.placeMove("7", "O");
         test.placeMove("6", "O");
@@ -65,7 +65,7 @@ public class BoardTest {
     }
 
     @Test
-    public void checkIfBoarFull() {
+    public void checkIfBoardFull() {
         assertEquals(false, test.isBoardFull());
     }
 
@@ -146,5 +146,20 @@ public class BoardTest {
 
         assertEquals(testRightDiag, test.getRightDiagonal());
 
+    }
+
+    @Test
+    public void checkLeftDiagonalforWin() {
+        fillBoard();
+
+        assertEquals(3, test.checkLeftDiagonal("X"));
+
+    }
+
+    @Test
+    public void checkRightDiagonalforWin() {
+        fillBoard();
+
+        assertEquals(0, test.checkRightDiagonal("O"));
     }
 }
