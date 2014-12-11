@@ -2,6 +2,7 @@ package com.solak.TTT;
 
 import com.solak.TTT.Board;
 import com.solak.TTT.Player;
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.Test;
 import org.junit.Before;
 
@@ -14,6 +15,7 @@ import static org.junit.Assert.assertTrue;
 /**
  * Created by administrator on 12/4/14.
  */
+
 public class BoardTest {
     Board test;
     Player testPlayer;
@@ -96,14 +98,53 @@ public class BoardTest {
     }
 
     @Test
-    public void getTopBoardRow() {
-        HashMap<Integer, String> boardCells = new LinkedHashMap();
-        boardCells.put(3, "");
-        boardCells.put(2, "");
-        boardCells.put(1, "");
+    public void checkTopRow() {
+        HashMap<String, String> testTopRow = new LinkedHashMap();
+        testTopRow.put("3", "");
+        testTopRow.put("2", "");
+        testTopRow.put("1", "");
 
-        assertEquals(boardCells, test.getTopBoardRow());
+        assertEquals(testTopRow, test.getTopBoardRow());
     }
 
+    @Test
+    public void checkMiddleRow() {
+        HashMap<String, String> testMidRow = new LinkedHashMap();
+        testMidRow.put("4", "");
+        testMidRow.put("5", "");
+        testMidRow.put("6", "");
 
+        assertEquals(testMidRow, test.getMiddleRow());
+    }
+
+    @Test
+    public void checkBottomRow() {
+        HashMap<String, String> testBottomRow = new LinkedHashMap();
+        testBottomRow.put("7", "");
+        testBottomRow.put("8", "");
+        testBottomRow.put("9", "");
+
+        assertEquals(testBottomRow, test.getBottomRow());
+    }
+
+    @Test
+    public void checkLeftDiagonal() {
+        HashMap<String, String> testLeftDiag = new LinkedHashMap();
+        testLeftDiag.put("1", "");
+        testLeftDiag.put("5", "");
+        testLeftDiag.put("9", "");
+
+        assertEquals(testLeftDiag, test.getLeftDiagonal());
+    }
+
+    @Test
+    public void checkRightDiagonal() {
+        HashMap<String, String> testRightDiag = new LinkedHashMap();
+        testRightDiag.put("3", "");
+        testRightDiag.put("5", "");
+        testRightDiag.put("7", "");
+
+        assertEquals(testRightDiag, test.getRightDiagonal());
+
+    }
 }
