@@ -32,6 +32,18 @@ public class BoardTest {
         test.placeMove("1", "X");
     }
 
+    public void fillOneSpace() {
+        test.placeMove("9", "");
+        test.placeMove("8", "");
+        test.placeMove("7", "");
+        test.placeMove("6", "");
+        test.placeMove("5", "");
+        test.placeMove("4", "");
+        test.placeMove("3", "");
+        test.placeMove("2", "");
+        test.placeMove("1", "X");
+    }
+
     @Before
     public void setUp() {
         test = new Board();
@@ -62,6 +74,13 @@ public class BoardTest {
     @Test
     public void checkIfVIsValid() {
         assertEquals(false, test.isMoveValid("v"));
+    }
+
+    @Test
+    public void checkTakenSpace() {
+        fillOneSpace();
+
+        assertEquals(false, test.isMoveValid("1"));
     }
 
     @Test
@@ -98,68 +117,23 @@ public class BoardTest {
     }
 
     @Test
-    public void checkTopRow() {
-        HashMap<String, String> testTopRow = new LinkedHashMap();
-        testTopRow.put("3", "");
-        testTopRow.put("2", "");
-        testTopRow.put("1", "");
-
-        assertEquals(testTopRow, test.getTopBoardRow());
-    }
-
-    @Test
-    public void checkMiddleRow() {
-        HashMap<String, String> testMidRow = new LinkedHashMap();
-        testMidRow.put("4", "");
-        testMidRow.put("5", "");
-        testMidRow.put("6", "");
-
-        assertEquals(testMidRow, test.getMiddleRow());
-    }
-
-    @Test
-    public void checkBottomRow() {
-        HashMap<String, String> testBottomRow = new LinkedHashMap();
-        testBottomRow.put("7", "");
-        testBottomRow.put("8", "");
-        testBottomRow.put("9", "");
-
-        assertEquals(testBottomRow, test.getBottomRow());
-    }
-
-    @Test
-    public void checkLeftDiagonal() {
-        HashMap<String, String> testLeftDiag = new LinkedHashMap();
-        testLeftDiag.put("1", "");
-        testLeftDiag.put("5", "");
-        testLeftDiag.put("9", "");
-
-        assertEquals(testLeftDiag, test.getLeftDiagonal());
-    }
-
-    @Test
-    public void checkRightDiagonal() {
-        HashMap<String, String> testRightDiag = new LinkedHashMap();
-        testRightDiag.put("3", "");
-        testRightDiag.put("5", "");
-        testRightDiag.put("7", "");
-
-        assertEquals(testRightDiag, test.getRightDiagonal());
-
-    }
-
-    @Test
-    public void checkLeftDiagonalforWin() {
+    public void checkEntireBoardForWinWithX() {
         fillBoard();
 
-        assertEquals(3, test.checkLeftDiagonal("X"));
-
+        assertEquals(true, test.checkBoardForWin("X"));
     }
 
     @Test
-    public void checkRightDiagonalforWin() {
+    public void checkEntireBoardForWinWithO() {
         fillBoard();
 
-        assertEquals(0, test.checkRightDiagonal("O"));
+        assertEquals(false, test.checkBoardForWin("O"));
+    }
+
+    @Test
+    public void checkEmptyIshBoardForWin() {
+        fillOneSpace();
+
+        assertEquals(false, test.checkBoardForWin("O"));
     }
 }

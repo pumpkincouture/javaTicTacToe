@@ -1,6 +1,8 @@
 package com.solak.TTT;
 
-import javax.xml.bind.SchemaOutputResolver;
+import com.sun.tools.internal.ws.wsdl.document.soap.SOAPUse;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -48,30 +50,32 @@ public class Board {
         return boardCells;
     }
 
-
-    public LinkedHashMap<String, String> getTopBoardRow() {
-        return getpartOfBoard("1", "2", "3");
+    public boolean checkBoardForWin (String gamePiece) {
+        for (LinkedHashMap<String, String> element : createBoardMatrix()) {
+            if (checkBoardForWin(gamePiece, element) == 3) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    public LinkedHashMap<String, String> getMiddleRow() {
-        return getpartOfBoard("4", "5", "6");
-    }
+    private ArrayList<LinkedHashMap<String, String>> createBoardMatrix () {
+        ArrayList<LinkedHashMap<String, String>> boardMatrix = new ArrayList();
+        boardMatrix.add(getPartOfBoard("1", "2", "3"));
+        boardMatrix.add(getPartOfBoard("4", "5", "6"));
+        boardMatrix.add(getPartOfBoard("7", "8", "9"));
+        boardMatrix.add(getPartOfBoard("1", "5", "9"));
+        boardMatrix.add(getPartOfBoard("3", "5", "7"));
+        boardMatrix.add(getPartOfBoard("1", "4", "7"));
+        boardMatrix.add(getPartOfBoard("2", "5", "8"));
+        boardMatrix.add(getPartOfBoard("3", "6", "9"));
 
-    public LinkedHashMap<String, String> getBottomRow() {
-        return getpartOfBoard("7", "8", "9");
-    }
-
-    public LinkedHashMap<String, String> getLeftDiagonal() {
-        return getpartOfBoard("1", "5", "9");
-    }
-
-    public LinkedHashMap<String, String> getRightDiagonal() {
-        return getpartOfBoard("3", "5", "7");
+        return boardMatrix;
     }
 
     private boolean validateCells(String answer) {
         for (Map.Entry<String, String> entry : boardCells.entrySet()) {
-            if (entry.getKey().equals(answer) && entry.getValue().equals("")) {
+            if (entry.getKey().equals(answer) && entry.getValue().isEmpty()) {
                 return true;
             }
         }
@@ -80,15 +84,14 @@ public class Board {
 
     private boolean checkForOpenCells() {
         for(Map.Entry<String, String> entry : boardCells.entrySet()) {
-            String emptySpace = "";
-            if (entry.getValue().equals(emptySpace)) {
+            if (entry.getValue().isEmpty()) {
                 return false;
             }
         }
         return true;
     }
 
-    private LinkedHashMap<String, String> getpartOfBoard(String space1, String space2, String space3) {
+    private LinkedHashMap<String, String> getPartOfBoard(String space1, String space2, String space3) {
         LinkedHashMap<String, String> boardPart = new LinkedHashMap();
         for (Map.Entry<String, String> entry : boardCells.entrySet()) {
             if (entry.getKey().equals(space1) || entry.getKey().equals(space2) || entry.getKey().equals(space3)) {
@@ -98,13 +101,12 @@ public class Board {
         return boardPart;
     }
 
-    private int checkBoard(String gamePiece, LinkedHashMap<String, String> boardPart) {
+    private int checkBoardForWin(String gamePiece, LinkedHashMap<String, String> boardPart) {
         int threeInARow = 0;
 
         for (Map.Entry<String, String> entry : boardPart.entrySet()) {
             if (entry.getValue().equals(gamePiece)) {
                 threeInARow += 1;
-
             }
         }
         return threeInARow;
