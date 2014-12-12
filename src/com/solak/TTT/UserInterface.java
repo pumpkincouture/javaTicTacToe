@@ -41,12 +41,8 @@ public class UserInterface {
         System.out.println(gamePiece + " wins!");
     }
 
-    public void catsGame() {
+    public void printCatsGame() {
         System.out.println("Cat's game!");
-    }
-
-    public void printGameOver() {
-        System.out.println("The game is over.");
     }
 
     public void printError() {

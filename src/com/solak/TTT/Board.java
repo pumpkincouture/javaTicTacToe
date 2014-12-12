@@ -60,7 +60,6 @@ public class Board {
         } return "";
     }
 
-
     private ArrayList<LinkedHashMap<String, String>> createBoardMatrix () {
         ArrayList<LinkedHashMap<String, String>> boardMatrix = new ArrayList();
         boardMatrix.add(getPartOfBoard("1", "2", "3"));
