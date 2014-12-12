@@ -28,6 +28,12 @@ public class Board {
         return boardCells;
     }
 
+    public int getBoardSize() {
+        long square = Math.round(Math.sqrt(boardCells.size()));
+        int squareRoot = (int) square;
+        return squareRoot;
+    }
+
     public boolean isMoveValid(String answer) {
        return validateCells(answer);
     }
@@ -43,7 +49,7 @@ public class Board {
 
     public boolean isThereAWinner (String gamePiece) {
         for (LinkedHashMap<String, String> element : createBoardMatrix()) {
-            if (checkBoardForWin(gamePiece, element) == 3) {
+            if (checkBoardForWin(gamePiece, element) == getBoardSize()) {
                 return true;
             }
         }
@@ -51,13 +57,14 @@ public class Board {
     }
 
     public String getWinningPlayer(String playerOne, String playerTwo) {
+        String noWinner = "";
         for (LinkedHashMap<String, String> element : createBoardMatrix()) {
-            if (checkBoardForWin(playerOne, element) == 3) {
+            if (checkBoardForWin(playerOne, element) == getBoardSize()) {
                 return playerOne;
-            } else if (checkBoardForWin(playerTwo, element) == 3) {
+            } else if (checkBoardForWin(playerTwo, element) == getBoardSize()) {
                 return playerTwo;
             }
-        } return "";
+        } return noWinner;
     }
 
     private ArrayList<LinkedHashMap<String, String>> createBoardMatrix () {

@@ -112,6 +112,11 @@ public class BoardTest {
     }
 
     @Test
+    public void checkSizeOfBoard() {
+        assertEquals(3, test.getBoardSize());
+    }
+
+    @Test
     public void checkEntireBoardForWinWithX() {
         fillBoard();
 
