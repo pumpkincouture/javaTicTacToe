@@ -110,13 +110,13 @@ public class Board {
     }
 
     private int checkBoardForWin(String gamePiece, LinkedHashMap<String, String> boardPart) {
-        int threeInARow = 0;
+        int inARow = 0;
 
         for (Map.Entry<String, String> entry : boardPart.entrySet()) {
             if (entry.getValue().equals(gamePiece)) {
-                threeInARow += 1;
+                inARow += 1;
             }
         }
-        return threeInARow;
+        return inARow;
     }
 }
