@@ -50,6 +50,17 @@ public class Board {
         return false;
     }
 
+    public String getWinningPlayer(String playerOne, String playerTwo) {
+        for (LinkedHashMap<String, String> element : createBoardMatrix()) {
+            if (checkBoardForWin(playerOne, element) == 3) {
+                return playerOne;
+            } else if (checkBoardForWin(playerTwo, element) == 3) {
+                return playerTwo;
+            }
+        } return "";
+    }
+
+
     private ArrayList<LinkedHashMap<String, String>> createBoardMatrix () {
         ArrayList<LinkedHashMap<String, String>> boardMatrix = new ArrayList();
         boardMatrix.add(getPartOfBoard("1", "2", "3"));

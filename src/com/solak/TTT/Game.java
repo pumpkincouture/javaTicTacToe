@@ -15,7 +15,7 @@ public class Game {
 
     public void startGame() {
         playGame();
-        printEndGame();
+        printGameWinner(getWinnerName(firstPlayerPiece(), secondPlayerPiece()));
     }
 
     private boolean playGame() {
@@ -57,6 +57,9 @@ public class Game {
         }
     }
 
+    private String getWinnerName(String playerOne, String playerTwo) {
+        return setup.getBoard().getWinningPlayer(playerOne, playerTwo);
+    }
 
     private String getPlayerOne() {
         return chooseMove();
@@ -66,8 +69,8 @@ public class Game {
         setup.getUI().printUserPrompt(playerPiece);
     }
 
-    private void printEndGame() {
-        setup.getUI().printGameOver();
+    private void printGameWinner(String gamePiece) {
+        setup.getUI().printWinner(gamePiece);
     }
 
     private String firstPlayerPiece() {
