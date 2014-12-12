@@ -51,7 +51,7 @@ public class Game {
         String choice = getPlayerOne();
           if (isInvalidMove(choice)) {
             printChoiceError();
-            getFirstMove(playerTwo);
+            getSecondMove(playerTwo);
         } else {
             placeMoveOnBoard(choice, secondPlayerPiece());
         }
