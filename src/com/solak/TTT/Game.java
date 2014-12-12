@@ -13,39 +13,63 @@ public class Game {
         this.setup = new SetUp();
     }
 
-    public void playGame() {
-        printIntro();
-        getPlayerMoves(firstPlayerPiece());
+    public void startGame() {
+        playGame();
         printEndGame();
     }
 
-    private void getPlayerMoves(String playerPiece) {
-        while (boardHasOpenSpaces()) {
-            setup.getUI().printUserPrompt(playerPiece);
-            displayBoard();
-            String choice = chooseMove();
-            if (isInvalidMove(choice)) {
-                setup.getUI().printError();
-                getPlayerMoves(playerPiece);
-            } else {
-                placeMoveOnBoard(choice, playerPiece);
-                System.out.println(boardHasAWinner(playerPiece));
-                getPlayerMoves(switchPlayers(playerPiece));
-            }
+    private boolean playGame() {
+        printIntro();
+          while (boardHasOpenSpaces()) {
+              getFirstMove(firstPlayerPiece());
+              if (thereIsAWinner(firstPlayerPiece())) {
+                  return false;
+              }
+              getSecondMove(secondPlayerPiece());
+              if (thereIsAWinner(secondPlayerPiece())) {
+                  return false;
+              }
+          }
+        return true;
+    }
+
+    private void getFirstMove(String playerOne) {
+        printPlayerPrompt(playerOne);
+        displayBoard();
+        String choice = getPlayerOne();
+        if (isInvalidMove(choice)) {
+            printChoiceError();
+            getFirstMove((playerOne));
+        } else {
+            placeMoveOnBoard(choice, firstPlayerPiece());
         }
     }
 
-    private String switchPlayers(String startingPlayer) {
-        if (startingPlayer == secondPlayerPiece()) {
-            return firstPlayerPiece();
+    private void getSecondMove(String playerTwo) {
+        printPlayerPrompt(playerTwo);
+        displayBoard();
+        String choice = getPlayerOne();
+        if (isInvalidMove(choice)) {
+            printChoiceError();
+            getFirstMove(playerTwo);
         } else {
-            return secondPlayerPiece();
+            placeMoveOnBoard(choice, secondPlayerPiece());
         }
+    }
+
+
+    private String getPlayerOne() {
+        return chooseMove();
+    }
+
+    private void printPlayerPrompt(String playerPiece) {
+        setup.getUI().printUserPrompt(playerPiece);
     }
 
     private void printEndGame() {
         setup.getUI().printGameOver();
     }
+
     private String firstPlayerPiece() {
         return setup.getFirstPlayer().getGamePiece();
     }
@@ -61,6 +85,10 @@ public class Game {
         setup.getUI().printStartingPlayer(firstPlayerPiece());
     }
 
+    private void printChoiceError() {
+        setup.getUI().printError();
+    }
+
     private String chooseMove() {
         return setup.getUI().captureChoice();
     }
@@ -69,12 +97,12 @@ public class Game {
         return setup.getBoard().isMoveValid(move) == false;
     }
 
-    private boolean boardHasAWinner(String gamePiece) {
-        return setup.getBoard().checkBoardForWin(gamePiece);
+    private boolean thereIsAWinner(String gamePiece) {
+        return setup.getBoard().isThereAWinner(gamePiece);
     }
 
     private boolean boardHasOpenSpaces() {
-        return !setup.getBoard().isBoardFull();
+        return setup.getBoard().isBoardOpen();
     }
 
     private void displayBoard() {

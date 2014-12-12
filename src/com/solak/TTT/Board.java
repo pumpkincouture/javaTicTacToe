@@ -1,7 +1,5 @@
 package com.solak.TTT;
 
-import com.sun.tools.internal.ws.wsdl.document.soap.SOAPUse;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -30,18 +28,11 @@ public class Board {
         return boardCells;
     }
 
-    public int getBoardSize() {
-        long square = Math.round(Math.sqrt(boardCells.size()));
-        int squareRoot = (int) square;
-        return squareRoot;
-
-    }
-
     public boolean isMoveValid(String answer) {
        return validateCells(answer);
     }
 
-    public boolean isBoardFull() {
+    public boolean isBoardOpen() {
         return checkForOpenCells();
     }
 
@@ -50,7 +41,7 @@ public class Board {
         return boardCells;
     }
 
-    public boolean checkBoardForWin (String gamePiece) {
+    public boolean isThereAWinner (String gamePiece) {
         for (LinkedHashMap<String, String> element : createBoardMatrix()) {
             if (checkBoardForWin(gamePiece, element) == 3) {
                 return true;
@@ -85,10 +76,10 @@ public class Board {
     private boolean checkForOpenCells() {
         for(Map.Entry<String, String> entry : boardCells.entrySet()) {
             if (entry.getValue().isEmpty()) {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     private LinkedHashMap<String, String> getPartOfBoard(String space1, String space2, String space3) {

@@ -84,15 +84,15 @@ public class BoardTest {
     }
 
     @Test
-    public void checkIfBoardFull() {
-        assertEquals(false, test.isBoardFull());
+    public void checkIfBoardHasOpenSpaces() {
+        assertEquals(true, test.isBoardOpen());
     }
 
     @Test
     public void checkIfBoardFullWithMockInputs () {
         fillBoard();
 
-        assertEquals(true, test.isBoardFull());
+        assertEquals(false, test.isBoardOpen());
     }
 
     @Test
@@ -112,28 +112,23 @@ public class BoardTest {
     }
 
     @Test
-    public void checkSizeOfBoard() {
-      assertEquals(3, test.getBoardSize());
-    }
-
-    @Test
     public void checkEntireBoardForWinWithX() {
         fillBoard();
 
-        assertEquals(true, test.checkBoardForWin("X"));
+        assertEquals(true, test.isThereAWinner("X"));
     }
 
     @Test
     public void checkEntireBoardForWinWithO() {
         fillBoard();
 
-        assertEquals(false, test.checkBoardForWin("O"));
+        assertEquals(false, test.isThereAWinner("O"));
     }
 
     @Test
     public void checkEmptyIshBoardForWin() {
         fillOneSpace();
 
-        assertEquals(false, test.checkBoardForWin("O"));
+        assertEquals(false, test.isThereAWinner("O"));
     }
 }
