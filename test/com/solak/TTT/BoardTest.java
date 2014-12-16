@@ -8,13 +8,10 @@ import org.junit.Before;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
-/**
- * Created by administrator on 12/4/14.
- */
 
 public class BoardTest {
     Board test;
@@ -135,5 +132,22 @@ public class BoardTest {
         fillOneSpace();
 
         assertEquals(false, test.isThereAWinner("O"));
+    }
+
+    @Test
+    public void getArrayofEmptySpace() {
+        fillOneSpace();
+        LinkedList<String> openCells = new LinkedList();
+
+        openCells.push("9");
+        openCells.push("8");
+        openCells.push("7");
+        openCells.push("6");
+        openCells.push("5");
+        openCells.push("4");
+        openCells.push("3");
+        openCells.push("2");
+
+        assertEquals(openCells, test.getOpenSpaces());
     }
 }

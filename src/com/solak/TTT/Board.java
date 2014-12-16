@@ -1,9 +1,7 @@
 package com.solak.TTT;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class Board {
 
@@ -23,6 +21,10 @@ public class Board {
 
     public HashMap getBoardCells() {
         return boardCells;
+    }
+
+    public List<String> getOpenSpaces() {
+        return getOpenCellLocations();
     }
 
     public int getBoardSize() {
@@ -94,6 +96,16 @@ public class Board {
             }
         }
         return false;
+    }
+
+    private List<String> getOpenCellLocations() {
+        LinkedList<String> openCells = new LinkedList();
+        for (Map.Entry<String, String> entry : boardCells.entrySet()) {
+            if (entry.getValue().isEmpty()) {
+                openCells.push(entry.getKey());
+            }
+        }
+        return openCells;
     }
 
     private LinkedHashMap<String, String> getPartOfBoard(String space1, String space2, String space3) {
