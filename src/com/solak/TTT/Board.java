@@ -5,9 +5,6 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/**
- * Created by administrator on 12/4/14.
- */
 public class Board {
 
     private HashMap<String, String> boardCells = new LinkedHashMap();

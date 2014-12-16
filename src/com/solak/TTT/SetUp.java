@@ -3,9 +3,6 @@ package com.solak.TTT;
 import com.solak.TTT.Board;
 import com.solak.TTT.Player;
 
-/**
- * Created by administrator on 12/8/14.
- */
 public class SetUp {
     private Player player1;
     private Player player2;

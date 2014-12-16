@@ -2,9 +2,7 @@ package com.solak.TTT;
 
 import java.util.LinkedHashMap;
 import java.util.HashMap;
-/**
- * Created by administrator on 12/9/14.
- */
+
 public class Game {
 
     private SetUp setup;
@@ -16,6 +14,7 @@ public class Game {
     public void startGame() {
         playGame();
         printGameWinner(getWinnerName(firstPlayerPiece(), secondPlayerPiece()));
+        displayBoard();
     }
 
     private boolean playGame() {

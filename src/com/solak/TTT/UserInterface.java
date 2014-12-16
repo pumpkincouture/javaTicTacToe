@@ -5,10 +5,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-/**
- * Created by administrator on 12/4/14.
- */
-
 public class UserInterface {
 
     public void printWelcomeMessage() {
