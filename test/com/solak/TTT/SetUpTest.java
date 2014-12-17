@@ -1,9 +1,5 @@
 package com.solak.TTT;
 
-import com.solak.TTT.Board;
-import com.solak.TTT.Player;
-import com.solak.TTT.SetUp;
-import com.solak.TTT.UserInterface;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,14 +16,14 @@ public class SetUpTest {
     Player player1;
     Player player2;
     Board boardTest;
-    UserInterface uiTest;
+    CommandLineInterface uiTest;
 
     @Before
     public void createTest() {
         player1 = new Player("X");
         player2 = new Player("O");
         boardTest = new Board();
-        uiTest = new UserInterface();
+        uiTest = new CommandLineInterface();
         test = new SetUp();
     }
 

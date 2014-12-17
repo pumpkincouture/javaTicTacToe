@@ -1,19 +1,16 @@
 package com.solak.TTT;
 
-import com.solak.TTT.Board;
-import com.solak.TTT.Player;
-
 public class SetUp {
     private Player player1;
     private Player player2;
     private Board board;
-    private UserInterface userinterface;
+    private CommandLineInterface userinterface;
 
     public SetUp(){
         this.player1 = new Player("X");
         this.player2 = new Player("O");
         this.board = new Board();
-        this.userinterface = new UserInterface();
+        this.userinterface = new CommandLineInterface();
     }
 
     public Player getFirstPlayer() {
@@ -28,7 +25,7 @@ public class SetUp {
         return board;
     }
 
-    public UserInterface getUI() {
+    public CommandLineInterface getUI() {
         return userinterface;
     }
 }

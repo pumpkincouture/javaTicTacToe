@@ -1,8 +1,5 @@
 package com.solak.TTT;
 
-import java.util.LinkedHashMap;
-import java.util.HashMap;
-
 public class Game {
 
     private SetUp setup;
