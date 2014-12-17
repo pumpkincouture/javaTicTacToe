@@ -1,14 +1,10 @@
 package com.solak.TTT;
 
-import com.solak.TTT.Player;
-import org.junit.Test;
 import org.junit.Before;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by administrator on 12/4/14.
- */
 public class PlayerTest {
     Player test;
 

@@ -49,6 +49,7 @@ public class CommandLineInterface implements UserInterface {
         printMiddleRow(boardCells);
         printLines();
         printBottomRow(boardCells);
+        System.out.print("\n");
     }
 
     private void printTopRow(HashMap<String, String> boardCells) {
