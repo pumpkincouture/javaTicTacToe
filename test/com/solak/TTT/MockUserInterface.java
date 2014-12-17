@@ -3,9 +3,6 @@ package com.solak.TTT;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Created by administrator on 12/17/14.
- */
 public class MockUserInterface implements UserInterface {
 
     private List<String> nextMoves = new LinkedList<String>();

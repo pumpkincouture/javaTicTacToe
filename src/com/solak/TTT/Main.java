@@ -1,13 +1,13 @@
 package com.solak.TTT;
 
-/**
- * Created by administrator on 12/4/14.
- */
 public class Main {
 
     public static void main(String[] args) {
-        Game gameRunner = new Game();
-        //UserInterface ui = new CommandLineInterface();
+        Player player1 = new Player("X");
+        Player player2 = new Player("O");
+        Board board = new Board();
+        UserInterface ui = new CommandLineInterface();
+        Game gameRunner = new Game(player1, player2, board, (CommandLineInterface) ui);
         gameRunner.startGame();
     }
 }
