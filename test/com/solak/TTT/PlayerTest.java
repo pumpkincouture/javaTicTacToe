@@ -6,15 +6,15 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class PlayerTest {
-    Player test;
+    private Player testPlayer;
 
     @Before
     public void setUp() {
-        test = new Player("X");
+        testPlayer = new Player("X");
     }
 
     @Test
     public void printPiece() {
-        assertEquals("X", test.getGamePiece());
+        assertEquals("X", testPlayer.getGamePiece());
     }
 }
