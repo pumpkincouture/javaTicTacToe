@@ -13,7 +13,7 @@ public class GameTest {
     private Board board = new Board();
     private MockUserInterface mockUi = new MockUserInterface();
 
-    public void fillBoard(String choice, String gamePiece) {
+    private void fillBoard(String choice, String gamePiece) {
         gameTest.placeMoveOnBoard(choice, gamePiece);
     }
 
