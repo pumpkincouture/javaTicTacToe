@@ -13,7 +13,7 @@ public class BoardTest {
     private Board boardTest;
     private Player testPlayer;
 
-    public void fillBoard() {
+    private void fillBoard() {
         boardTest.placeMove("9", "X");
         boardTest.placeMove("8", "X");
         boardTest.placeMove("7", "O");
@@ -25,7 +25,7 @@ public class BoardTest {
         boardTest.placeMove("1", "X");
     }
 
-    public void fillOneSpace() {
+    private void fillOneSpace() {
         boardTest.placeMove("9", "");
         boardTest.placeMove("8", "");
         boardTest.placeMove("7", "");
