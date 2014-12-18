@@ -3,17 +3,14 @@ package com.solak.TTT;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-
 import static org.junit.Assert.assertEquals;
 
 public class GameTest {
 
     Game gameTest;
-    Player player1;
-    Player player2;
-    Board board;
+    Player player1 = new Player("X");
+    Player player2 = new Player("O");
+    Board board = new Board();
     MockUserInterface mockui = new MockUserInterface();
 
     @Before
@@ -22,22 +19,34 @@ public class GameTest {
     }
 
     @Test
-    public void getFirstMove() {
-        HashMap<String, String> boardCells = new LinkedHashMap();
-        boardCells.put("9", "");
-        boardCells.put("8", "");
-        boardCells.put("7", "");
-        boardCells.put("6", "");
-        boardCells.put("5", "");
-        boardCells.put("4", "");
-        boardCells.put("3", "");
-        boardCells.put("2", "");
-        boardCells.put("1", "");
+    public void displayWelcomeMessage() {
+        gameTest.printWelcome();
+        assertEquals(true, mockui.isWelcomeMessageCalled());
+    }
 
+    @Test
+    public void displayGamePieces() {
+        gameTest.printGamePieces();
+        assertEquals(true, mockui.isGamePieceMessageCalled());
+    }
 
-        mockui.seeAllMoves();
+    @Test
+    public void displayStartingPlayer() {
+        gameTest.printStartingPlayer();
+        assertEquals(true, mockui.isStartingPlayerCalled());
+    }
 
-        assertEquals(true, true);
+    @Test
+    public void getInitialBoardDisplay() {
+        gameTest.displayBoard();
+        assertEquals(true, mockui.isDisplayBoardCalled());
+    }
 
+    @Test
+    public void getFirstPlayerMove() {
+//        gameTest.chooseMove();
+        mockui.addNextMove("5");
+        System.out.println(mockui.captureChoice());
+//        assertEquals(true, mockui.captureChoice());
     }
 }

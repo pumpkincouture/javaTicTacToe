@@ -6,15 +6,11 @@ import java.util.Scanner;
 public class CommandLineInterface implements UserInterface {
 
     public void printWelcomeMessage() {
-        System.out.println("Welcome to Tic Tac Toe!");
+        System.out.println("Welcome to Tic Tac Toe! The first player to get 3 in a row wins!");
     }
 
     public void printGamePieceAssignment(String playerOnePiece, String playerTwoPiece) {
         System.out.println("Player 1 will have the " + playerOnePiece + " piece and Player 2 will have the " + playerTwoPiece + " piece.");
-    }
-
-    public void printRules() {
-        System.out.println("The first player to get 3 in a row wins!");
     }
 
     public void printStartingPlayer(String gamePiece) {

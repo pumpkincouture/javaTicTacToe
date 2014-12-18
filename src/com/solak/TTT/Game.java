@@ -34,7 +34,7 @@ public class Game {
         return true;
     }
 
-    private void getFirstMove(String playerOne) {
+    public void getFirstMove(String playerOne) {
         printPlayerPrompt(playerOne);
         displayBoard();
         String choice = getPlayerOne();
@@ -46,7 +46,7 @@ public class Game {
         }
     }
 
-    private void getSecondMove(String playerTwo) {
+    public void getSecondMove(String playerTwo) {
         printPlayerPrompt(playerTwo);
         displayBoard();
         String choice = getPlayerOne();
@@ -58,19 +58,19 @@ public class Game {
         }
     }
 
-    private String getWinnerName(String playerOne, String playerTwo) {
+    public String getWinnerName(String playerOne, String playerTwo) {
         return board.getWinningPlayer(playerOne, playerTwo);
     }
 
-    private String getPlayerOne() {
+    public String getPlayerOne() {
         return chooseMove();
     }
 
-    private void printPlayerPrompt(String playerPiece) {
+    public void printPlayerPrompt(String playerPiece) {
         userinterface.printUserPrompt(playerPiece);
     }
 
-    private void printGameWinner(String gamePiece) {
+    public void printGameWinner(String gamePiece) {
           if (gamePiece.isEmpty()) {
             userinterface.printCatsGame();
         } else {
@@ -78,46 +78,57 @@ public class Game {
         }
     }
 
-    private String firstPlayerPiece() {
+    public String firstPlayerPiece() {
         return player1.getGamePiece();
     }
 
-    private String secondPlayerPiece() {
+    public String secondPlayerPiece() {
         return player2.getGamePiece();
     }
 
-    private void printIntro() {
+    public void printIntro() {
+        printWelcome();
+        printGamePieces();
+        printStartingPlayer();
+    }
+
+    public void printWelcome() {
         userinterface.printWelcomeMessage();
+    }
+
+    public void printGamePieces() {
         userinterface.printGamePieceAssignment(firstPlayerPiece(), secondPlayerPiece());
-        userinterface.printRules();
+    }
+
+    public void printStartingPlayer() {
         userinterface.printStartingPlayer(firstPlayerPiece());
     }
 
-    private void printChoiceError() {
+    public void printChoiceError() {
         userinterface.printError();
     }
 
-    private String chooseMove() {
+    public String chooseMove() {
         return userinterface.captureChoice();
     }
 
-    private boolean isInvalidMove(String move) {
+    public boolean isInvalidMove(String move) {
         return board.isMoveValid(move) == false;
     }
 
-    private boolean thereIsAWinner(String gamePiece) {
+    public boolean thereIsAWinner(String gamePiece) {
         return board.isThereAWinner(gamePiece);
     }
 
-    private boolean boardHasOpenSpaces() {
+    public boolean boardHasOpenSpaces() {
         return board.isBoardOpen();
     }
 
-    private void displayBoard() {
+    public void displayBoard() {
         userinterface.printBoard(board.getBoardCells());
     }
 
-    private void placeMoveOnBoard(String answer, String gamePiece) {
+    public void placeMoveOnBoard(String answer, String gamePiece) {
         board.placeMove(answer, gamePiece);
     }
 }
