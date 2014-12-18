@@ -2,16 +2,11 @@ package com.solak.TTT;
 
 import org.junit.Before;
 
-import static org.junit.Assert.assertEquals;
-
-/**
- * Created by administrator on 12/8/14.
- */
 public class UserInterfaceTest {
-    CommandLineInterface test;
+    private CommandLineInterface testUi;
 
     @Before
     public void setUp() {
-        test = new CommandLineInterface();
+        testUi = new CommandLineInterface();
     }
 }
