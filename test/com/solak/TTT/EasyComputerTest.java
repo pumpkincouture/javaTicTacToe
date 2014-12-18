@@ -9,7 +9,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class EasyComputerTest {
-    ComputerPlayer computerTest;
+    private ComputerPlayer computerTest;
 
     public List<String> getSpace() {
         LinkedList<String> openCells = new LinkedList();
