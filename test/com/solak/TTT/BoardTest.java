@@ -105,8 +105,13 @@ public class BoardTest {
     }
 
     @Test
-    public void checkSizeOfBoard() {
-        assertEquals(3, boardTest.getBoardSize());
+    public void getLengthOfBoard() {
+        assertEquals(9, boardTest.getBoardLength());
+    }
+
+    @Test
+    public void checkBoard() {
+        assertEquals(3, boardTest.getBoardSquareRoot(9));
     }
 
     @Test
