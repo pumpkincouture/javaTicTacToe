@@ -13,10 +13,9 @@ public class MockUserInterface extends CommandLineInterface implements UserInter
     private boolean displayUserPromptCalled = false;
     private boolean displayInvalidMoveMessageCalled = false;
     private boolean displayBoardCalled = false;
+    private boolean winnerStringCalled = false;
+    private boolean catsGameCalled = false;
 
-
-    // ["1", "2", "4", "3", "7"] - player 1 wins
-    // ["fpoksdfpoksdf", "1"] - invalid move, then valid move
 
     public void addNextMove(String move) {
         nextMoves.add(move);
@@ -42,12 +41,20 @@ public class MockUserInterface extends CommandLineInterface implements UserInter
         displayUserPromptCalled = true;
     }
 
-    public void printError() {
+    public void printError(String choice) {
         displayInvalidMoveMessageCalled = true;
     }
 
     public void printBoard(HashMap<String, String> boardCells) {
         displayBoardCalled = true;
+    }
+
+    public void printWinner(String gamePiece) {
+        winnerStringCalled = true;
+    }
+
+    public void printCatsGame() {
+        catsGameCalled = true;
     }
 
     public boolean isWelcomeMessageCalled() {
@@ -72,5 +79,13 @@ public class MockUserInterface extends CommandLineInterface implements UserInter
 
     public boolean isDisplayInvalidMoveMessageCalled() {
         return displayInvalidMoveMessageCalled;
+    }
+
+    public boolean isWinnerStringCalled() {
+        return winnerStringCalled;
+    }
+
+    public boolean isCatsGameCalled() {
+        return catsGameCalled;
     }
 }
