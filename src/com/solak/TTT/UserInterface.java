@@ -16,5 +16,9 @@ public interface UserInterface {
 
     public void printBoard(HashMap<String, String> boardCells);
 
-    public void printError();
+    public void printError(String choice);
+
+    public void printWinner(String gamePiece);
+
+    public void printCatsGame();
 }
