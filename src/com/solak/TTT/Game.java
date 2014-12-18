@@ -39,7 +39,7 @@ public class Game {
         displayBoard();
         String choice = getPlayerOne();
           if (isInvalidMove(choice)) {
-            printChoiceError();
+            printChoiceError(choice);
             getFirstMove((playerOne));
         } else {
             placeMoveOnBoard(choice, firstPlayerPiece());
@@ -51,7 +51,7 @@ public class Game {
         displayBoard();
         String choice = getPlayerOne();
           if (isInvalidMove(choice)) {
-            printChoiceError();
+            printChoiceError(choice);
             getSecondMove(playerTwo);
         } else {
             placeMoveOnBoard(choice, secondPlayerPiece());
@@ -104,8 +104,10 @@ public class Game {
         userinterface.printStartingPlayer(firstPlayerPiece());
     }
 
-    public void printChoiceError() {
-        userinterface.printError();
+    public void printChoiceError(String move) {
+        if (isInvalidMove(move)) {
+            userinterface.printError(move);
+        }
     }
 
     public String chooseMove() {
