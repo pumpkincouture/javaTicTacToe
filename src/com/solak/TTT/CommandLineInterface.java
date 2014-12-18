@@ -35,8 +35,8 @@ public class CommandLineInterface implements UserInterface {
         System.out.println("Cat's game!");
     }
 
-    public void printError() {
-        System.out.println("That move is not available, please try again.");
+    public void printError(String choice) {
+        System.out.println(choice + " is not available, please try again.");
     }
 
     public void printBoard(HashMap<String, String> boardCells) {
