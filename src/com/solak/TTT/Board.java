@@ -26,8 +26,12 @@ public class Board {
         return getOpenCellLocations();
     }
 
-    public int getBoardSize() {
-        long square = Math.round(Math.sqrt(boardCells.size()));
+    public int getBoardLength() {
+        return boardCells.size();
+    }
+
+    public int getBoardSquareRoot(int boardLength) {
+        long square = Math.round(Math.sqrt(boardLength));
         int squareRoot = (int) square;
         return squareRoot;
     }
@@ -47,7 +51,7 @@ public class Board {
 
     public boolean isThereAWinner (String gamePiece) {
         for (LinkedHashMap<String, String> element : createBoardMatrix()) {
-            if (checkBoardForWin(gamePiece, element) == getBoardSize()) {
+            if (checkBoardForWin(gamePiece, element) == getBoardSquareRoot(getBoardLength())) {
                 return true;
             }
         }
@@ -57,9 +61,9 @@ public class Board {
     public String getWinningPlayer(String playerOne, String playerTwo) {
         String noWinner = "";
         for (LinkedHashMap<String, String> element : createBoardMatrix()) {
-            if (checkBoardForWin(playerOne, element) == getBoardSize()) {
+            if (checkBoardForWin(playerOne, element) == getBoardSquareRoot(getBoardLength())) {
                 return playerOne;
-            } else if (checkBoardForWin(playerTwo, element) == getBoardSize()) {
+            } else if (checkBoardForWin(playerTwo, element) == getBoardSquareRoot(getBoardLength())) {
                 return playerTwo;
             }
         } return noWinner;
