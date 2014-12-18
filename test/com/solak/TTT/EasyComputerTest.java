@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 public class EasyComputerTest {
     private ComputerPlayer computerTest;
 
-    public List<String> getSpace() {
+    private List<String> getSpace() {
         LinkedList<String> openCells = new LinkedList();
         openCells.push("9");
         return openCells;
