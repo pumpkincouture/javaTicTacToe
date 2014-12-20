@@ -1,21 +1,22 @@
 package com.solak.TTT;
 
-import java.util.LinkedHashMap;
-import java.util.HashMap;
-/**
- * Created by administrator on 12/9/14.
- */
 public class Game {
+    private Player player1;
+    private Player player2;
+    private Board board;
+    private CommandLineInterface userinterface;
 
-    private SetUp setup;
-
-    public Game() {
-        this.setup = new SetUp();
+    public Game(Player player1, Player player2, Board board, CommandLineInterface userinterface) {
+        this.player1 = player1;
+        this.player2 = player2;
+        this.board = board;
+        this.userinterface = userinterface;
     }
 
     public void startGame() {
         playGame();
         printGameWinner(getWinnerName(firstPlayerPiece(), secondPlayerPiece()));
+        displayBoard();
     }
 
     private boolean playGame() {
@@ -33,90 +34,103 @@ public class Game {
         return true;
     }
 
-    private void getFirstMove(String playerOne) {
+    public void getFirstMove(String playerOne) {
         printPlayerPrompt(playerOne);
         displayBoard();
         String choice = getPlayerOne();
           if (isInvalidMove(choice)) {
-            printChoiceError();
+            printChoiceError(choice);
             getFirstMove((playerOne));
         } else {
             placeMoveOnBoard(choice, firstPlayerPiece());
         }
     }
 
-    private void getSecondMove(String playerTwo) {
+    public void getSecondMove(String playerTwo) {
         printPlayerPrompt(playerTwo);
         displayBoard();
         String choice = getPlayerOne();
           if (isInvalidMove(choice)) {
-            printChoiceError();
+            printChoiceError(choice);
             getSecondMove(playerTwo);
         } else {
             placeMoveOnBoard(choice, secondPlayerPiece());
         }
     }
 
-    private String getWinnerName(String playerOne, String playerTwo) {
-        return setup.getBoard().getWinningPlayer(playerOne, playerTwo);
+    public String getWinnerName(String playerOne, String playerTwo) {
+        return board.getWinningPlayer(playerOne, playerTwo);
     }
 
-    private String getPlayerOne() {
+    public String getPlayerOne() {
         return chooseMove();
     }
 
-    private void printPlayerPrompt(String playerPiece) {
-        setup.getUI().printUserPrompt(playerPiece);
+    public void printPlayerPrompt(String playerPiece) {
+        userinterface.printUserPrompt(playerPiece);
     }
 
-    private void printGameWinner(String gamePiece) {
+    public void printGameWinner(String gamePiece) {
           if (gamePiece.isEmpty()) {
-            setup.getUI().printCatsGame();
+            userinterface.printCatsGame();
         } else {
-            setup.getUI().printWinner(gamePiece);
+            userinterface.printWinner(gamePiece);
         }
     }
 
-    private String firstPlayerPiece() {
-        return setup.getFirstPlayer().getGamePiece();
+    public String firstPlayerPiece() {
+        return player1.getGamePiece();
     }
 
-    private String secondPlayerPiece() {
-        return setup.getSecondPlayer().getGamePiece();
+    public String secondPlayerPiece() {
+        return player2.getGamePiece();
     }
 
-    private void printIntro() {
-        setup.getUI().printWelcomeMessage();
-        setup.getUI().printGamePieceAssignment(firstPlayerPiece(), secondPlayerPiece());
-        setup.getUI().printRules();
-        setup.getUI().printStartingPlayer(firstPlayerPiece());
+    public void printIntro() {
+        printWelcome();
+        printGamePieces();
+        printStartingPlayer();
     }
 
-    private void printChoiceError() {
-        setup.getUI().printError();
+    public void printWelcome() {
+        userinterface.printWelcomeMessage();
     }
 
-    private String chooseMove() {
-        return setup.getUI().captureChoice();
+    public void printGamePieces() {
+        userinterface.printGamePieceAssignment(firstPlayerPiece(), secondPlayerPiece());
     }
 
-    private boolean isInvalidMove(String move) {
-        return setup.getBoard().isMoveValid(move) == false;
+    public void printStartingPlayer() {
+        userinterface.printStartingPlayer(firstPlayerPiece());
     }
 
-    private boolean thereIsAWinner(String gamePiece) {
-        return setup.getBoard().isThereAWinner(gamePiece);
+    public void printChoiceError(String move) {
+        if (isInvalidMove(move)) {
+            userinterface.printError(move);
+        }
     }
 
-    private boolean boardHasOpenSpaces() {
-        return setup.getBoard().isBoardOpen();
+    public String chooseMove() {
+        return userinterface.captureChoice();
     }
 
-    private void displayBoard() {
-        setup.getUI().printBoard(setup.getBoard().getBoardCells());
+    public boolean isInvalidMove(String move) {
+        return board.isMoveValid(move) == false;
     }
 
-    private void placeMoveOnBoard(String answer, String gamePiece) {
-        setup.getBoard().placeMove(answer, gamePiece);
+    public boolean thereIsAWinner(String gamePiece) {
+        return board.isThereAWinner(gamePiece);
+    }
+
+    public boolean boardHasOpenSpaces() {
+        return board.isBoardOpen();
+    }
+
+    public void displayBoard() {
+        userinterface.printBoard(board.getBoardCells());
+    }
+
+    public void placeMoveOnBoard(String answer, String gamePiece) {
+        board.placeMove(answer, gamePiece);
     }
 }

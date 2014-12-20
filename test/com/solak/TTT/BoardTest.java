@@ -1,52 +1,45 @@
 package com.solak.TTT;
 
-import com.solak.TTT.Board;
-import com.solak.TTT.Player;
-import jdk.nashorn.internal.ir.annotations.Ignore;
-import org.junit.Test;
 import org.junit.Before;
+import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-/**
- * Created by administrator on 12/4/14.
- */
 
 public class BoardTest {
-    Board test;
-    Player testPlayer;
+    private Board boardTest;
+    private Player testPlayer;
 
-    public void fillBoard() {
-        test.placeMove("9", "X");
-        test.placeMove("8", "X");
-        test.placeMove("7", "O");
-        test.placeMove("6", "O");
-        test.placeMove("5", "X");
-        test.placeMove("4", "O");
-        test.placeMove("3", "X");
-        test.placeMove("2", "O");
-        test.placeMove("1", "X");
+    private void fillBoard() {
+        boardTest.placeMove("9", "X");
+        boardTest.placeMove("8", "X");
+        boardTest.placeMove("7", "O");
+        boardTest.placeMove("6", "O");
+        boardTest.placeMove("5", "X");
+        boardTest.placeMove("4", "O");
+        boardTest.placeMove("3", "X");
+        boardTest.placeMove("2", "O");
+        boardTest.placeMove("1", "X");
     }
 
-    public void fillOneSpace() {
-        test.placeMove("9", "");
-        test.placeMove("8", "");
-        test.placeMove("7", "");
-        test.placeMove("6", "");
-        test.placeMove("5", "");
-        test.placeMove("4", "");
-        test.placeMove("3", "");
-        test.placeMove("2", "");
-        test.placeMove("1", "X");
+    private void fillOneSpace() {
+        boardTest.placeMove("9", "");
+        boardTest.placeMove("8", "");
+        boardTest.placeMove("7", "");
+        boardTest.placeMove("6", "");
+        boardTest.placeMove("5", "");
+        boardTest.placeMove("4", "");
+        boardTest.placeMove("3", "");
+        boardTest.placeMove("2", "");
+        boardTest.placeMove("1", "X");
     }
 
     @Before
     public void setUp() {
-        test = new Board();
+        boardTest = new Board();
         testPlayer = new Player("X");
     }
 
@@ -63,36 +56,36 @@ public class BoardTest {
         boardCells.put("2", "");
         boardCells.put("1", "");
 
-        assertEquals(boardCells, test.getBoardCells());
+        assertEquals(boardCells, boardTest.getBoardCells());
     }
 
     @Test
     public void checkIfSevenIsValid() {
-        assertEquals(true, test.isMoveValid("7"));
+        assertEquals(true, boardTest.isMoveValid("7"));
     }
 
     @Test
     public void checkIfVIsValid() {
-        assertEquals(false, test.isMoveValid("v"));
+        assertEquals(false, boardTest.isMoveValid("v"));
     }
 
     @Test
     public void checkTakenSpace() {
         fillOneSpace();
 
-        assertEquals(false, test.isMoveValid("1"));
+        assertEquals(false, boardTest.isMoveValid("1"));
     }
 
     @Test
     public void checkIfBoardHasOpenSpaces() {
-        assertEquals(true, test.isBoardOpen());
+        assertEquals(true, boardTest.isBoardOpen());
     }
 
     @Test
     public void checkIfBoardFullWithMockInputs () {
         fillBoard();
 
-        assertEquals(false, test.isBoardOpen());
+        assertEquals(false, boardTest.isBoardOpen());
     }
 
     @Test
@@ -108,32 +101,54 @@ public class BoardTest {
         boardCells.put("2", "");
         boardCells.put("1", "");
 
-        assertEquals(boardCells, test.placeMove("9", testPlayer.getGamePiece()));
+        assertEquals(boardCells, boardTest.placeMove("9", testPlayer.getGamePiece()));
     }
 
     @Test
-    public void checkSizeOfBoard() {
-        assertEquals(3, test.getBoardSize());
+    public void getLengthOfBoard() {
+        assertEquals(9, boardTest.getBoardLength());
+    }
+
+    @Test
+    public void checkBoard() {
+        assertEquals(3, boardTest.getBoardSquareRoot(9));
     }
 
     @Test
     public void checkEntireBoardForWinWithX() {
         fillBoard();
 
-        assertEquals(true, test.isThereAWinner("X"));
+        assertEquals(true, boardTest.isThereAWinner("X"));
     }
 
     @Test
     public void checkEntireBoardForWinWithO() {
         fillBoard();
 
-        assertEquals(false, test.isThereAWinner("O"));
+        assertEquals(false, boardTest.isThereAWinner("O"));
     }
 
     @Test
     public void checkEmptyIshBoardForWin() {
         fillOneSpace();
 
-        assertEquals(false, test.isThereAWinner("O"));
+        assertEquals(false, boardTest.isThereAWinner("O"));
+    }
+
+    @Test
+    public void getArrayofEmptySpace() {
+        fillOneSpace();
+        LinkedList<String> openCells = new LinkedList();
+
+        openCells.push("9");
+        openCells.push("8");
+        openCells.push("7");
+        openCells.push("6");
+        openCells.push("5");
+        openCells.push("4");
+        openCells.push("3");
+        openCells.push("2");
+
+        assertEquals(openCells, boardTest.getOpenSpaces());
     }
 }
