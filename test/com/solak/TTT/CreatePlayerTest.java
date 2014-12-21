@@ -16,14 +16,25 @@ public class CreatePlayerTest {
     }
 
     @Test
-    public void askUserForChoice() {
-        mockui.addNextMove("5");
-        assertEquals("5", createPlayerTest.chooseOpponent());
+    public void checkThatComputerOpponentIsCreated() {
+        mockui.addNextMove("c");
+        assertEquals("ComputerPlayer", createPlayerTest.getChosenOpponent().getClass().getSimpleName());
     }
 
     @Test
-    public void validateOpponentChoice() {
+    public void checkThatHumanOpponentIsCreated() {
+        mockui.addNextMove("h");
+        assertEquals("HumanPlayer", createPlayerTest.getChosenOpponent().getClass().getSimpleName());
+    }
+
+    @Test
+    public void promptAgainIfInvalidOutput() {
+        mockui.addNextMove("f");
+        mockui.addNextMove("-");
         mockui.addNextMove("c");
-        assertEquals("C", createPlayerTest.validateChoice(createPlayerTest.chooseOpponent()));
+        createPlayerTest.getChosenOpponent();
+
+        assertEquals(true, mockui.isDisplayInvalidMoveMessageCalled());
+        assertEquals("ComputerPlayer", createPlayerTest.getAssignedOpponent().getClass().getSimpleName());
     }
 }
