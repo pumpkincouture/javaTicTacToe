@@ -7,12 +7,12 @@ import static org.junit.Assert.assertEquals;
 
 public class HumanPlayerTest {
     private HumanPlayer humanPlayerTest;
-    private MockUserInterface mockUI= new MockUserInterface();
+    private MockUserInterface mockUI;
 
     @Before
     public void setUp() {
-
-    humanPlayerTest = new HumanPlayer("X", mockUI);
+        mockUI =  new MockUserInterface();
+        humanPlayerTest = new HumanPlayer("X", mockUI);
     }
 
     @Test
