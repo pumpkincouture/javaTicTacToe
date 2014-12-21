@@ -3,6 +3,9 @@ package com.solak.TTT;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+
 import static org.junit.Assert.assertEquals;
 
 public class GameTest {
@@ -15,6 +18,21 @@ public class GameTest {
 
     private void fillBoard(String choice, String gamePiece) {
         gameTest.placeMoveOnBoard(choice, gamePiece);
+    }
+
+    private HashMap<String, String> sampleBoard() {
+        HashMap<String, String> boardCells = new LinkedHashMap();
+        boardCells.put("9", "");
+        boardCells.put("8", "");
+        boardCells.put("7", "");
+        boardCells.put("6", "");
+        boardCells.put("5", "");
+        boardCells.put("4", "");
+        boardCells.put("3", "X");
+        boardCells.put("2", "");
+        boardCells.put("1", "");
+
+        return boardCells;
     }
 
     @Before
@@ -56,6 +74,16 @@ public class GameTest {
         mockUi.addNextMove("ppppp");
         gameTest.printChoiceError(mockUi.captureChoice());
         assertEquals(true, mockUi.isDisplayInvalidMoveMessageCalled());
+    }
+
+    @Test
+    public void promptUntilMoveValid() {
+        mockUi.addNextMove("PPP");
+        mockUi.addNextMove("hehhghntnt");
+        mockUi.addNextMove("3");
+        gameTest.getFirstMove(mockUi.captureChoice());
+        assertEquals(true, mockUi.isDisplayInvalidMoveMessageCalled());
+        assertEquals(sampleBoard(), board.getBoardCells());
     }
 
     @Test
