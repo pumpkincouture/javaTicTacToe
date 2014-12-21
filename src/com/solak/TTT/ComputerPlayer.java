@@ -21,6 +21,4 @@ public class ComputerPlayer extends Player {
         String space = board.getOpenSpaces().get(index);
         return space;
     }
-
-
 }
