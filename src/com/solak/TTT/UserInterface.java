@@ -12,6 +12,8 @@ public interface UserInterface {
 
     public void printStartingPlayer(String gamePiece);
 
+    public void promptForOpponent();
+
     public void printUserPrompt(String gamePiece);
 
     public void printBoard(HashMap<String, String> boardCells);

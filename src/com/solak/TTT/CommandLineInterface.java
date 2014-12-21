@@ -23,6 +23,10 @@ public class CommandLineInterface implements UserInterface {
         return choice;
     }
 
+    public void promptForOpponent() {
+        System.out.println("Please choose your opponent : press 'h' for human or 'c' for computer.");
+    }
+
     public void printUserPrompt(String gamePiece) {
         System.out.println("Please choose a valid space with your " + gamePiece + ".");
     }
