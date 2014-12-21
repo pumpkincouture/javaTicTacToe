@@ -44,7 +44,7 @@ public class BoardTest {
     }
 
     @Test
-    public void printBoardHash() {
+    public void returnBoardCellsAsHash() {
         HashMap<String, String> boardCells = new LinkedHashMap();
         boardCells.put("9", "");
         boardCells.put("8", "");
@@ -110,7 +110,7 @@ public class BoardTest {
     }
 
     @Test
-    public void checkBoard() {
+    public void checkBoardSquareRoot() {
         assertEquals(3, boardTest.getBoardSquareRoot(9));
     }
 
