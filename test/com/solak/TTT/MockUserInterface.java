@@ -26,6 +26,10 @@ public class MockUserInterface extends CommandLineInterface implements UserInter
         return nextMoves.remove(0);
     }
 
+    public List<String> printMoves() {
+        return nextMoves;
+    }
+
     public void printWelcomeMessage() {
         displayWelcomePromptCalled = true;
     }
