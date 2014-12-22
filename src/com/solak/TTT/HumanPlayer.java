@@ -7,7 +7,7 @@ public class HumanPlayer extends Player {
         super(gamePiece);
         this.ui = ui;
     }
-
+    @Override
     public String getMove() {
        return ui.captureChoice();
     }

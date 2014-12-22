@@ -31,8 +31,8 @@ public class CommandLineInterface implements UserInterface {
         System.out.println("Please choose your opponent : press 'h' for human or 'c' for computer.");
     }
 
-    public void printUserPrompt(String gamePiece) {
-        System.out.println("Please choose a move for your "  + gamePiece + " by pressing a number for that corresponding space.");
+    public void printUserPrompt(String playerName, String gamePiece) {
+        System.out.println(playerName + ", please choose a move for your "  + gamePiece + " by pressing a number for that corresponding space.");
     }
 
     public void printWinner(String gamePiece) {

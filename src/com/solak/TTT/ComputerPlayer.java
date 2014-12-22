@@ -11,7 +11,7 @@ public class ComputerPlayer extends Player {
         this.board = board;
         randomGenerator = new Random();
     }
-
+    @Override
     public String getMove() {
         return chooseOpenSpace();
     }
