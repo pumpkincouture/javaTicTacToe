@@ -47,7 +47,7 @@ public class MockUserInterface extends CommandLineInterface implements UserInter
         displayOpponentPrompt = true;
     }
 
-    public void printUserPrompt(String gamePiece) {
+    public void printUserPrompt(String playerName, String gamePiece) {
         displayUserPromptCalled = true;
     }
 
