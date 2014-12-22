@@ -6,9 +6,11 @@ public interface UserInterface {
 
     public String captureChoice();
 
+    public void printChosenOpponent(String opponentName);
+
     public void printWelcomeMessage();
 
-    public void printGamePieceAssignment(String playerOnePiece, String playerTwoPiece);
+    public void printGamePieceAssignment(String onePiece, String playerOnePiece, String playerTwoPiece);
 
     public void printStartingPlayer(String gamePiece);
 

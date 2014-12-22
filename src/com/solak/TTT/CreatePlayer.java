@@ -26,7 +26,6 @@ public class CreatePlayer {
         String capitalizedChoice = opponentChoice.toUpperCase();
         String computerChoice = "C";
         String humanChoice = "H";
-        String invalidChoice = "i";
 
         if (capitalizedChoice.equals(computerChoice)) {
             player = new ComputerPlayer("O", new Board());
@@ -40,4 +39,3 @@ public class CreatePlayer {
         }
     }
 }
-
