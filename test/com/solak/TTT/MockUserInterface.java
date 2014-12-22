@@ -11,6 +11,8 @@ public class MockUserInterface extends CommandLineInterface implements UserInter
     private boolean displayGamePieceAssignmentCalled = false;
     private boolean displayStartingPlayerCalled = false;
     private boolean displayUserPromptCalled = false;
+    private boolean displayOpponentPrompt = false;
+    private boolean displayChosenOpponent = false;
     private boolean displayInvalidMoveMessageCalled = false;
     private boolean displayBoardCalled = false;
     private boolean winnerStringCalled = false;
@@ -29,15 +31,23 @@ public class MockUserInterface extends CommandLineInterface implements UserInter
         displayWelcomePromptCalled = true;
     }
 
-    public void printGamePieceAssignment(String playerOnePiece, String playerTwoPiece){
+    public void printGamePieceAssignment(String onePiece, String playerOnePiece, String playerTwoPiece) {
         displayGamePieceAssignmentCalled = true;
+    }
+
+    public void printChosenOpponent(String opponentName) {
+        displayChosenOpponent = true;
     }
 
     public void  printStartingPlayer(String gamePiece) {
         displayStartingPlayerCalled = true;
     }
 
-    public void printUserPrompt(String gamePiece) {
+    public void promptForOpponent() {
+        displayOpponentPrompt = true;
+    }
+
+    public void printUserPrompt(String playerName, String gamePiece) {
         displayUserPromptCalled = true;
     }
 
@@ -67,6 +77,14 @@ public class MockUserInterface extends CommandLineInterface implements UserInter
 
     public boolean isStartingPlayerCalled() {
         return displayStartingPlayerCalled;
+    }
+
+    public boolean isOpponentPromptCalled() {
+        return displayOpponentPrompt;
+    }
+
+    public boolean isOpponentChoiceDisplayed() {
+        return displayChosenOpponent;
     }
 
     public boolean isDisplayBoardCalled() {

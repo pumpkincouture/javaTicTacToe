@@ -1,24 +1,24 @@
 package com.solak.TTT;
 
-import java.util.List;
 import java.util.Random;
 
-public class ComputerPlayer {
-    private String gamePiece;
-    private Random randomgenerator;
+public class ComputerPlayer extends Player {
+    private Random randomGenerator;
+    private Board board;
 
-    public ComputerPlayer(String gamePiece) {
-        this.gamePiece = gamePiece;
-        randomgenerator = new Random();
+    public ComputerPlayer(String gamePiece, Board board) {
+        super(gamePiece);
+        this.board = board;
+        randomGenerator = new Random();
+    }
+    @Override
+    public String getMove() {
+        return chooseOpenSpace();
     }
 
-    public String getGamePiece() {
-        return gamePiece;
-    }
-
-    public String chooseOpenSpace(List<String> openCells) {
-        int index = randomgenerator.nextInt(openCells.size());
-        String space = openCells.get(index);
+    private String chooseOpenSpace() {
+        int index = randomGenerator.nextInt(board.getOpenSpaces().size());
+        String space = board.getOpenSpaces().get(index);
         return space;
     }
 }
