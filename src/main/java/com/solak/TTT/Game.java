@@ -21,16 +21,16 @@ public class Game {
 
     private boolean playGame() {
         printIntro();
-          while (boardHasOpenSpaces()) {
-              getFirstMove(firstPlayerPiece());
-              if (thereIsAWinner(firstPlayerPiece()) || !boardHasOpenSpaces()) {
-                  return false;
-              }
-              getSecondMove();
-              if (thereIsAWinner(secondPlayerPiece())) {
-                  return false;
-              }
-          }
+        while (boardHasOpenSpaces()) {
+            getFirstMove(firstPlayerPiece());
+            if (thereIsAWinner(firstPlayerPiece()) || !boardHasOpenSpaces()) {
+                return false;
+            }
+            getSecondMove();
+            if (thereIsAWinner(secondPlayerPiece())) {
+                return false;
+            }
+        }
         return true;
     }
 
@@ -38,7 +38,7 @@ public class Game {
         printPlayerPrompt(player1.getClass().getSimpleName(), playerOne);
         displayBoard();
         String choice = getPlayerOne();
-          if (isInvalidMove(choice)) {
+        if (isInvalidMove(choice)) {
             printChoiceError(choice);
             getFirstMove((playerOne));
         } else {
@@ -83,7 +83,7 @@ public class Game {
     }
 
     public void printGameWinner(String gamePiece) {
-          if (gamePiece.isEmpty()) {
+        if (gamePiece.isEmpty()) {
             userinterface.printCatsGame();
         } else {
             userinterface.printWinner(gamePiece);

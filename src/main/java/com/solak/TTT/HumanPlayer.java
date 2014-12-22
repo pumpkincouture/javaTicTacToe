@@ -9,6 +9,6 @@ public class HumanPlayer extends Player {
     }
     @Override
     public String getMove() {
-       return ui.captureChoice();
+        return ui.captureChoice();
     }
 }

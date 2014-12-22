@@ -48,9 +48,6 @@ public class BoardTest {
         boardTest.placeMove(choice, gamePiece);
     }
 
-
-
-
     @Before
     public void setUp() {
         boardTest = new Board();
@@ -75,6 +72,7 @@ public class BoardTest {
 
     @Test
     public void checkIfSevenIsValid() {
+        System.out.println(boardTest.getBoardCells());
         assertEquals(true, boardTest.isMoveValid("7"));
     }
 
@@ -83,12 +81,12 @@ public class BoardTest {
         assertEquals(false, boardTest.isMoveValid("v"));
     }
 
-//    @Test
-//    public void checkTakenSpace() {
-//        fillBoard("1", "X");
-//
-//        assertEquals(false, boardTest.isMoveValid("1"));
-//    }
+    @Test
+    public void checkTakenSpace() {
+        fillBoard("1", "X");
+
+        assertEquals(false, boardTest.isMoveValid("1"));
+    }
 
     @Test
     public void checkIfBoardHasOpenSpaces() {

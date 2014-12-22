@@ -37,7 +37,7 @@ public class Board {
     }
 
     public boolean isMoveValid(String answer) {
-       return validateCells(answer);
+        return validateCells(answer);
     }
 
     public boolean isBoardOpen() {
