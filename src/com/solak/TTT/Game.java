@@ -97,7 +97,7 @@ public class Game {
     }
 
     public void printGamePieces() {
-        userinterface.printGamePieceAssignment(firstPlayerPiece(), secondPlayerPiece());
+        userinterface.printGamePieceAssignment(firstPlayerPiece(), player2.getClass().getSimpleName(), secondPlayerPiece());
     }
 
     public void printStartingPlayer() {

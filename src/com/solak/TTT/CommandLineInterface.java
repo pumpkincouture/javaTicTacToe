@@ -9,8 +9,12 @@ public class CommandLineInterface implements UserInterface {
         System.out.println("Welcome to Tic Tac Toe! The first player to get 3 in a row wins!");
     }
 
-    public void printGamePieceAssignment(String playerOnePiece, String playerTwoPiece) {
-        System.out.println("Player 1 will have the " + playerOnePiece + " piece and Player 2 will have the " + playerTwoPiece + " piece.");
+    public void printChosenOpponent(String opponentName) {
+        System.out.println("You've chosen to play against " + opponentName + ".");
+    }
+
+    public void printGamePieceAssignment(String playerOnePiece, String opponentName, String playerTwoPiece) {
+        System.out.println("Player 1 will have the " + playerOnePiece + " piece and " + opponentName + " will have the " + playerTwoPiece + " piece.");
     }
 
     public void printStartingPlayer(String gamePiece) {
@@ -28,7 +32,7 @@ public class CommandLineInterface implements UserInterface {
     }
 
     public void printUserPrompt(String gamePiece) {
-        System.out.println("Please choose a valid space with your " + gamePiece + ".");
+        System.out.println("Please choose a move for your "  + gamePiece + " by pressing a number for that corresponding space.");
     }
 
     public void printWinner(String gamePiece) {
