@@ -13,7 +13,7 @@ public class BoardTest {
     private Board boardTest;
     private Player testPlayer;
 
-    private void fillBoard() {
+    private void simulateFilledBoard() {
         boardTest.placeMove("9", "X");
         boardTest.placeMove("8", "X");
         boardTest.placeMove("7", "O");
@@ -25,17 +25,31 @@ public class BoardTest {
         boardTest.placeMove("1", "X");
     }
 
-    private void fillOneSpace() {
-        boardTest.placeMove("9", "");
-        boardTest.placeMove("8", "");
-        boardTest.placeMove("7", "");
-        boardTest.placeMove("6", "");
-        boardTest.placeMove("5", "");
-        boardTest.placeMove("4", "");
-        boardTest.placeMove("3", "");
-        boardTest.placeMove("2", "");
-        boardTest.placeMove("1", "X");
+    private boolean getCell(String boardCell, String gamePiece) {
+        HashMap<String, String> boardCells = new LinkedHashMap();
+        boardCells.put("9", "X");
+        boardCells.put("8", "");
+        boardCells.put("7", "");
+        boardCells.put("6", "");
+        boardCells.put("5", "");
+        boardCells.put("4", "");
+        boardCells.put("3", "");
+        boardCells.put("2", "");
+        boardCells.put("1", "");
+
+        if (boardCells.containsKey(boardCell) && boardCells.containsValue(gamePiece)) {
+            return true;
+        }
+        return false;
+
     }
+
+    private void fillBoard(String choice, String gamePiece) {
+        boardTest.placeMove(choice, gamePiece);
+    }
+
+
+
 
     @Before
     public void setUp() {
@@ -69,12 +83,12 @@ public class BoardTest {
         assertEquals(false, boardTest.isMoveValid("v"));
     }
 
-    @Test
-    public void checkTakenSpace() {
-        fillOneSpace();
-
-        assertEquals(false, boardTest.isMoveValid("1"));
-    }
+//    @Test
+//    public void checkTakenSpace() {
+//        fillBoard("1", "X");
+//
+//        assertEquals(false, boardTest.isMoveValid("1"));
+//    }
 
     @Test
     public void checkIfBoardHasOpenSpaces() {
@@ -83,25 +97,15 @@ public class BoardTest {
 
     @Test
     public void checkIfBoardFullWithMockInputs () {
-        fillBoard();
+        simulateFilledBoard();
 
         assertEquals(false, boardTest.isBoardOpen());
     }
 
     @Test
     public void placeMoveOnBoard() {
-        HashMap<String, String> boardCells = new LinkedHashMap();
-        boardCells.put("9", "X");
-        boardCells.put("8", "");
-        boardCells.put("7", "");
-        boardCells.put("6", "");
-        boardCells.put("5", "");
-        boardCells.put("4", "");
-        boardCells.put("3", "");
-        boardCells.put("2", "");
-        boardCells.put("1", "");
-
-        assertEquals(boardCells, boardTest.placeMove("9", testPlayer.getGamePiece()));
+        boardTest.placeMove("9", testPlayer.getGamePiece());
+        assertEquals(true, getCell("9", testPlayer.getGamePiece()));
     }
 
     @Test
@@ -116,28 +120,62 @@ public class BoardTest {
 
     @Test
     public void checkEntireBoardForWinWithX() {
-        fillBoard();
+        simulateFilledBoard();
 
         assertEquals(true, boardTest.isThereAWinner("X"));
     }
 
     @Test
     public void checkEntireBoardForWinWithO() {
-        fillBoard();
+        simulateFilledBoard();
 
         assertEquals(false, boardTest.isThereAWinner("O"));
     }
 
     @Test
     public void checkEmptyIshBoardForWin() {
-        fillOneSpace();
+        fillBoard("1", "X");
 
         assertEquals(false, boardTest.isThereAWinner("O"));
     }
 
     @Test
-    public void getArrayofEmptySpace() {
-        fillOneSpace();
+    public void checkBoardForWinInScenarioTwo() {
+        fillBoard("1", "X");
+        fillBoard("5", "X");
+        fillBoard("9", "X");
+
+        assertEquals(true, boardTest.isThereAWinner("X"));
+    }
+
+    @Test
+    public void checkBoardForWinScenarioThree() {
+        fillBoard("3", "O");
+        fillBoard("5", "O");
+        fillBoard("7", "O");
+
+        assertEquals(true, boardTest.isThereAWinner("O"));
+    }
+
+    @Test
+    public void checkBoardForWinScenarioFour() {
+        fillBoard("1", "X");
+        fillBoard("2", "X");
+        fillBoard("3", "O");
+        fillBoard("4", "O");
+        fillBoard("5", "X");
+        fillBoard("6", "");
+        fillBoard("7", "X");
+        fillBoard("8", "O");
+        fillBoard("9", "O");
+
+        assertEquals(false, boardTest.isThereAWinner("X"));
+        assertEquals(false, boardTest.isThereAWinner("O"));
+    }
+
+    @Test
+    public void getArrayOfEmptySpace() {
+        fillBoard("1", "X");
         LinkedList<String> openCells = new LinkedList();
 
         openCells.push("9");
