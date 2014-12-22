@@ -44,7 +44,7 @@ public class BoardTest {
     }
 
     @Test
-    public void returnBoardCellsAsHash() {
+    public void returnBoardCellsAsHashMap() {
         HashMap<String, String> boardCells = new LinkedHashMap();
         boardCells.put("9", "");
         boardCells.put("8", "");

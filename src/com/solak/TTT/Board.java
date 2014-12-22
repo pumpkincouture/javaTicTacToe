@@ -84,11 +84,14 @@ public class Board {
     }
 
     private boolean validateCells(String answer) {
-        for (Map.Entry<String, String> entry : boardCells.entrySet()) {
-            if (entry.getKey().equals(answer) && entry.getValue().isEmpty()) {
-                return true;
-            }
-        }
+        if (boardCells.containsKey(answer) && boardCells.containsValue("")) {
+            return true;
+        };
+//        for (Map.Entry<String, String> entry : boardCells.entrySet()) {
+//            if (entry.getKey().equals(answer) && entry.getValue().isEmpty()) {
+//                return true;
+//            }
+//        }
         return false;
     }
 
