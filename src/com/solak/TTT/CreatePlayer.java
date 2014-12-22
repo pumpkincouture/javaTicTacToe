@@ -30,8 +30,10 @@ public class CreatePlayer {
 
         if (capitalizedChoice.equals(computerChoice)) {
             player = new ComputerPlayer("O", new Board());
+            ui.printChosenOpponent(player.getClass().getSimpleName());
         } else if (capitalizedChoice.equals(humanChoice)) {
             player = new HumanPlayer("O", ui);
+            ui.printChosenOpponent(player.getClass().getSimpleName());
         } else {
             ui.printError(opponentChoice);
             checkChoice(chooseOpponent());
